@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://db:5430/neo-group-demo
+    username: neo-group-demo
+    password: neo-group-demo
+
+  liquibase:
+    enabled: true
+    user: neo-group-demo
+    password: neo-group-demo

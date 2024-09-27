@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: neogroup.demo
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show_sql: false
+
+  liquibase:
+    enabled: false
+    change-log: classpath:db.changelog/main-changelog.yaml
