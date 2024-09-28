@@ -1,15 +1,14 @@
 plugins {
 	java
-	id("org.springframework.boot") version "3.3.4"
-	id("io.spring.dependency-management") version "1.1.6"
+	id("org.springframework.boot")
+	id("io.spring.dependency-management")
 }
 
-group = "xyz.sanvew"
-version = "0.0.1"
-
 java {
+	val javaTargetVersion: String by project
+
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(javaTargetVersion)
 	}
 }
 
@@ -25,16 +24,23 @@ repositories {
 
 dependencies {
 	// common
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-quartz")
-	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework:spring-aspects")
+	// utils
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
+	implementation("org.springframework.retry:spring-retry")
 	// database
-	implementation("org.liquibase:liquibase-core")
 	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.liquibase:liquibase-core")
 	// testing
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-testcontainers")
+	testImplementation("org.testcontainers:postgresql")
+	testImplementation("org.testcontainers:toxiproxy")
+	testImplementation("org.testcontainers:junit-jupiter")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 

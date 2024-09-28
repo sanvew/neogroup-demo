@@ -1,13 +1,8 @@
 package xyz.sanvew.neogroup.demo;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ApplicationTests {
-
+class ApplicationTests extends IntegrationTestBase {
 	@Test
-	void contextLoads() {
-	}
-
+	void contextLoads() { }
 }

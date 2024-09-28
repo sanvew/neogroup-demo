@@ -1,0 +1,13 @@
+version: '3.7'
+
+name: neogroup-demo
+
+services:
+  database:
+    image: postgres:16-alpine
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      POSTGRES_USER: neogroup-demo
+      POSTGRES_PASSWORD: neogroup-demo
+    ports:
+      - "5432:5432"
